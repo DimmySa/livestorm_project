@@ -1,0 +1,27 @@
+
+- name: Install nginx 
+  hosts: all
+  remote_user: dimmy
+  become: yes 
+
+  roles:
+   - nginx 
+
+- name: ensure nginx is at the latest version
+  apt:
+    name: nginx
+    state: latest 
+- name: make sure nginx is runnning
+  systemd: 
+    state: started
+    name: nginx 
+
+- name: copy the nginx config file and restart nginx
+  copy:
+    src: /files/index.html
+    dest: /usr/share/nginx/html/index.html
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
