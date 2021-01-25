@@ -1,4 +1,3 @@
-# Create an EC2 instane
 locals {
   vpc_id = "vpc-7e8da117"
   subnet_id = "subnet-18094371"
