@@ -7,6 +7,10 @@ locals {
   private_key_path = "~/livestorm_project/terraform/my_new_key.pem" 
 }
 
+provider "aws" {
+  region  = "${var.region}"
+  shared_credentials_file = "/c/Users/Dimmy/.aws/credentials"
+}
 
 resource "aws_instance" "nginx" {
   instance_type = "${var.instance_type}"
